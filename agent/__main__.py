@@ -1,4 +1,2 @@
-from app import main
-
 if __name__ == "__main__":
-    main()
+    print("Run the app with a ASGI server, e.g., 'uvicorn agent:app --reload'")
