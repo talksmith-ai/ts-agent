@@ -34,9 +34,17 @@ jobs:
         run: |
           echo "repo_lc=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
-      - name: Build and push Docker image (:latest)
+      - name: Extract version from pyproject.toml
+        id: version
+        run: |
+          VERSION=$(grep '^version = ' pyproject.toml | sed 's/version = "\(.*\)"/\1/')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push Docker image (:latest and :stg-v{version})
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ steps.repo.outputs.repo_lc }}:latest
+          tags: |
+            ghcr.io/${{ steps.repo.outputs.repo_lc }}:latest
+            ghcr.io/${{ steps.repo.outputs.repo_lc }}:stg-v${{ steps.version.outputs.version }}
