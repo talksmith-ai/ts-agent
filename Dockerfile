@@ -25,5 +25,8 @@ COPY . .
 # Expose the application port. (If you need to use a different port, change it here and in entrypoint.sh)
 EXPOSE 8000
 
+# Make entrypoint script executable
+RUN chmod +x /app/entrypoint.sh
+
 # Use entrypoint script to start the application
 ENTRYPOINT ["./entrypoint.sh"]
