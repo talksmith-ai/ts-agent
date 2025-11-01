@@ -4,5 +4,6 @@ version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.120.0",
+    "pipecat-ai[anthropic,assemblyai,asyncai,aws,aws-nova-sonic,azure,cartesia,cerebras,deepgram,deepseek,elevenlabs,fal,fireworks,fish,gladia,google,grok,groq,lmnt,mcp,neuphonic,nim,openai,openpipe,openrouter,perplexity,playht,qwen,rime,riva,sambanova,soniox,speechmatics,together,whisper]>=0.0.92",
     "pydantic-settings>=2.11.0",
 ]
